@@ -1,0 +1,227 @@
+/* Chatbot Widget Styling */
+.chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 800px; /* slightly wider */
+    max-width: 95%;
+    background: #fffde7; /* pale yellow background */
+    border-radius: Exploring 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    border-radius: 20px;
+}
+
+/* Collapsed state (floating circle) */
+.chat-widget.collapsed {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #fef9c3; /* light yellow circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    overflow: hidden; /* hide inner parts */
+}
+
+/* Hide everything inside EXCEPT the icon */
+.chat-widget.collapsed .chat-header span:first-child, /* hide "Chat with JellyBot" text */
+.chat-widget.collapsed .chat-body,
+.chat-widget.collapsed .chat-close {
+    display: none;
+}
+
+.chat-widget.collapsed .chat-toggle-icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url('assets/icon/chat-ai.png') no-repeat center;
+    background-size: contain;
+}
+
+/* Header */
+.chat-header {
+    background: #fefcbf; /* light yellow */
+    color: #333; /* dark text */
+    padding: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.chat-toggle-icon {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+    width: 24px;
+    height: 24px;
+    background: url('assets/icon/arrow.png') no-repeat center;
+    background-size: contain;
+}
+
+/* Body */
+.chat-body {
+    height: 600px; /* taller for product images */
+    display: flex;
+    flex-direction: column;
+    transition: height 0.3s ease-in-out;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Messages */
+.message {
+    max-width: 90%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    line-height: 1.8; /* updated line height */
+    font-size: 16px; /* updated font size */
+}
+
+.user-message {
+    background: #fef9e7; /* pale yellow */
+    color: #333; /* dark text */
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+    background: #fffef7; /* very pale yellow */
+    color: #333; /* dark text */
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.bot-message p {
+    margin: 0;
+    white-space: pre-line; /* Ensure newlines are rendered */
+}
+
+/* Input */
+.chat-input-container {
+    display: flex;
+    border-top: 1px solid #f0e4b6; /* pale yellow border */
+    padding: 15px;
+    background: #fffde7; /* pale yellow */
+}
+
+#chat-input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    background: #fff;
+    border-radius: 8px;
+}
+
+#send-btn {
+    background: #fefcbf; /* light yellow */
+    color: #333; /* dark text */
+    border: none;
+    padding: 0 20px;
+    margin-left: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+#send-btn:hover {
+    background: #f7e9a0; /* slightly darker yellow */
+    font-weight: 500;
+}
+
+/* Product Cards inside Chatbot */
+.products-container-chatbot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+    max-width: 100%; /* ensure it doesn't exceed message width */
+    box-sizing: border-box;
+}
+
+.product-card-chatbot {
+    box-sizing: border-box; /* include padding and borders in width */
+}
+
+.product-card-chatbot a {
+    text-decoration: none;
+    color: #333; /* dark text */
+    display: block;
+    border: 1px solid #f0e4b6; /* pale yellow border */
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card-chatbot a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-image-chatbot {
+    width: 60%; /* fixed width */
+    height: 130px; /* fixed height for uniform size */
+    object-fit: contain;
+    display: block;
+    margin: 10px auto; /* center horizontally */
+}
+
+.product-info-chatbot {
+    padding: 8px;
+    text-align: center;
+}
+
+.product-name-chatbot {
+    font-weight: 500;
+    font-size: 14px;
+    margin: 0 0 4px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-price-chatbot,
+.product-stock-chatbot {
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* Styles to disable scrolling on the body */
+body.chat-active {
+    overflow: hidden;
+}
+
+/* Styles for the new dimming overlay */
+.chatbot-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* 50% black transparency */
+    z-index: 999; /* Higher than page content, lower than the chatbot */
+    backdrop-filter: blur(1px); /* Optional: Adds a subtle blur effect */
+    display: none; /* Initially hidden */
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}

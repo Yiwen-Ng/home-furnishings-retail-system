@@ -1,0 +1,255 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Order Confirmation Section */
+.order-panel .container {
+    max-width: 100%;
+    margin: 100px auto 40px;
+    padding: 0 20px;
+}
+
+.order-panel .card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.check-icon, .cross-icon {
+    width: 50px;
+    height: 50px;
+    stroke: #28a745;
+    stroke-width: 4;
+    margin: 20px auto;
+    display: block;
+}
+
+.cross-icon {
+    stroke: #dc3545;
+}
+
+.card h1 {
+    font-size: 22px;
+    color: #1a1a1a;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.order-panel .details,
+.order-panel .details-total {
+    text-align: left;
+    margin: 20px 0;
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.details h2, .details-total h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.details p, .details-total p {
+    font-size: 16px;
+    color: #444;
+    margin-top: 15px;
+}
+
+.details .price {
+    float: right;
+    font-weight: 500;
+    color: #666;
+}
+
+.details-total .price {
+    float: right;
+    font-weight: 600;
+    color: #1e4b51;
+}
+
+.status-box {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-box-up {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    float: right;
+}
+
+.cancelled-status {
+    color: #dc3545;
+}
+
+.pending-status {
+    color: #ff6200;
+}
+
+.completed-status {
+    color: #28a745;
+}
+
+.no-orders {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+}
+
+.buttons {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    min-height: 48px;
+    min-width: 160px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-cancel {
+    background-color: #fff;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+}
+
+.btn-cancel:hover:not(:disabled) {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-cancel:disabled {
+    background-color: #e0e0e0;
+    color: #999;
+    border-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    text-align: left;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.modal-content ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-content ul li {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+
+.btn-keep {
+    background-color: #e0e0e0;
+    color: #444;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-keep:hover {
+    background-color: #d1d5db;
+}
+
+/* Add to order_confirmation_content.css and order_confirmation.css */
+.order-item {
+    margin-bottom: 8px;
+}
+
+.color-info {
+    display: inline-block;
+    padding: 3px 9px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #555;
+}

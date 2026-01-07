@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #fff;
+}
+
+.login-container {
+    display: flex;
+    height: 100vh;
+}
+
+.login-left {
+    flex: 1;
+    background-color: #1e4b51; /* from your homepage.css */
+    color: white;
+    padding: 60px 40px;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid white;
+    padding: 12px 16px;
+    border-radius: 5px;
+}
+
+.left-content {
+    margin-top: 300px;
+    margin-left: 70px;
+    max-width: 500px;
+}
+
+.left-content h1 {
+    font-size: 45px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.left-content h1 span {
+    color: #ffd700;
+    font-size: 50px;
+}
+
+.left-content p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.login-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background: #fff;
+}
+
+.form-box {
+    width: 100%;
+    max-width: 500px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 35px;
+    padding: 12px;
+    background-color: #1e4b51;
+    color: white;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #13363a;
+}
+
+.divider {
+    margin: 30px 0 15px;
+    height: 1px;
+    background: #ccc;
+}
+
+.no-account {
+    margin-bottom: 30px;
+    color: #555;
+    text-align: center;
+}
+
+.register-btn {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    padding: 12px;
+    border: 2px solid #1e4b51;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #1e4b51;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    background: #1e4b51;
+    color: white;
+}
+
+.error {
+    color: #d32f2f;
+    font-size: 0.9em;
+    margin: 5px 0;
+    background-color: #ffebee;
+    padding: 8px;
+    border-radius: 4px;
+}
+        
+.success {
+    color: #2e7d32;
+    font-size: 0.9em;
+    margin: 5px 0;
+    background-color: #e8f5e9;
+    padding: 8px;
+    border-radius: 4px;
+}

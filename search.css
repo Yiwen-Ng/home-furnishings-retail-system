@@ -1,0 +1,363 @@
+/* Prevent background scrolling when search panel is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Search Panel */
+.search-panel {
+    position: fixed;
+    top: 0%;
+    left: 15%; /* Center the 70% width panel */
+    width: 70%;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white for blur visibility */
+    backdrop-filter: blur(5px); /* Blur the background behind the panel */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+    z-index: 200;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-panel.partial-open {
+    height: 30vh; /* 1/4 of viewport height */
+}
+
+.search-panel.open {
+    height: 100vh; /* Full viewport height */
+}
+
+.search-panel .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 36px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-panel .closebtn:hover {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 20px 20px; /* Reduced padding for partial view */
+    position: relative;
+    flex-grow: 0; /* Prevent container from expanding unnecessarily */
+}
+
+.search-container h2 {
+    font-size: 40px;
+    font-weight: 400;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    color: #333;
+}
+
+.search-bar {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 15px 40px 15px 20px; /* Add right padding for icon */
+    font-size: 20px;
+    font-weight: 200;
+    color: #555;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    letter-spacing: 1.2px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input[type="text"]:focus {
+    border-color: #1e4b51;
+}
+
+.search-bar .search-icon {
+    position: absolute;
+    right: 15px;
+    font-size: 20px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.search-bar .search-icon:hover {
+    color: #1e4b51;
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 10;
+    display: none;
+    text-align: left;
+}
+
+.suggestions.show {
+    display: block;
+}
+
+.suggestion-item {
+    padding: 20px 20px;
+    font-size: 18px;
+    color: #555;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.suggestion-item:hover {
+    background-color: #f7f7f7;
+}
+
+/* Two-column layout for search results */
+.search-results-container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.search-results-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and WebKit browsers */
+}
+
+/* Left column: Collection */
+.search-panel .searchcollection-column {
+    width: 25%;
+    padding: 20px;
+}
+
+.search-panel .searchcollection-column h3 {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    opacity: 0 !important; /* Invisible by default */
+    text-transform: uppercase;
+    color: #333;
+}
+
+.search-panel.partial-open .searchcollection-column h3 {
+    opacity: 0 !important; /* Explicitly invisible in partial-open */
+}
+
+.search-panel.open .searchcollection-column h3 {
+    opacity: 1 !important; /* Visible when fully open */
+}
+
+.search-panel .searchcollection-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.search-panel .searchcollection-column li {
+    margin-bottom: 15px;
+}
+
+.search-panel .searchcollection-column li span {
+    color: #555; 
+    font-weight: 400; 
+    font-size: 18px; 
+    cursor: default;
+    display: block; 
+    padding: 5px 0;
+    margin-bottom: 30px; /* Spacing between spans */
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+/* Right column: Products */
+.search-results {
+    width: 80%;
+    /* display: grid; */
+    grid-template-columns: 1fr; /* Single column */
+    gap: 10px; /* Reduced gap between grid items for better spacing */
+    align-items: start; /* Prevent grid items from stretching */
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-sizing: border-box;
+    height: auto; /* Fit content height */
+    min-height: 200px; /* Reduced min-height for fewer products */
+    max-height: 70vh; /* Limit height for scrolling */
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.search-results::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and WebKit browsers */
+}
+
+.search-panel.open .search-results-container {
+    opacity: 1; /* Visible when fully open */
+}
+
+.search-panel.open .search-results {
+    opacity: 1; /* Visible when fully open */
+}
+
+.search-results .product-card-search {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    /* height: 140px; */
+    overflow: hidden; /* Clear overflow */
+}
+
+.search-results .product-card-search:hover {
+    transform: scale(1.02);
+}
+
+.search-results .product-box-search {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 120px; /* Fixed height for the inner content */
+}
+
+.search-results .product-img-container-search {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.search-results .product-img-search {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.search-results .product-info-search {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    height: 100%; /* Match the height of product-box */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.search-results .product-name-search {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 15px; /* Adjusted to fit within height */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 600px;
+}
+
+.search-results .product-price-search {
+    font-size: 18px;
+    font-weight: 500;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-results .product-link {
+    text-decoration: none;
+    display: block;
+}
+
+.search-results .sale-price-search {
+    color: red;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.search-results .original-price-search {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.no-results {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    margin: 20px 0;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .search-panel {
+        width: 90%; /* Wider on mobile */
+        left: 5%;
+    }
+    .search-container {
+        max-width: 100%;
+        padding: 15px;
+    }
+    .search-container h2 {
+        font-size: 28px;
+    }
+    .search-results-container {
+        flex-direction: column;
+    }
+    .search-panel .searchcollection-column,
+    .search-results {
+        width: 100%;
+    }
+    .search-results .product-box-search {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto; /* Allow height to adjust on mobile */
+    }
+    .search-results .product-info-search {
+        height: auto; /* Allow height to adjust on mobile */
+    }
+    .search-results .product-card-search {
+        height: auto; /* Allow height to adjust on mobile */
+    }
+    .search-results .product-img-container-search {
+        width: 80px;
+        height: 80px;
+    }
+}
